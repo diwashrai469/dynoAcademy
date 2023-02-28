@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text("error:${snapshot.error}"),
                         );
                       }
-                      return CourseListView();
+                      return const CourseListView();
                     }),
               ),
             )

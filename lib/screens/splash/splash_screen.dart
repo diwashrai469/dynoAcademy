@@ -1,5 +1,4 @@
 import 'package:dynoacademy/screens/home/bottom_nav_bar.dart';
-import 'package:dynoacademy/screens/home/home_screen.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:flutter/material.dart';
 
