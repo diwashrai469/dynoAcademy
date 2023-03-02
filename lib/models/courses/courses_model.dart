@@ -55,7 +55,7 @@ class CoursesModel {
   CoursesModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     mentorId = json['mentor_id'] != null
-        ? new MentorId.fromJson(json['mentor_id'])
+        ?  MentorId.fromJson(json['mentor_id'])
         : null;
     courseName = json['course_name'];
     courseDuration = json['course_duration'];

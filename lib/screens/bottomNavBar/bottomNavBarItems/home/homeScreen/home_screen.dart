@@ -1,8 +1,8 @@
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
-import 'package:dynoacademy/screens/home/course_list_view.dart';
+import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/widget/course_list_view.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
-import 'package:dynoacademy/widgets/custom/custom_textfield.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final courseData = Provider.of<CoursesProvider>(context);
+    final watchCourseData = context.watch<CoursesProvider>();
+
     return SafeArea(
       child: Scaffold(
           body: Padding(
@@ -27,13 +28,29 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 15,
             ),
+            SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: TextFormField(
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.circular(boarderCircularSize),
+                          borderSide: const BorderSide(color: Colors.blue),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.circular(boarderCircularSize),
+                          borderSide: const BorderSide(
+                            color: primaryColor,
+                          ),
+                        ),
+                        hintText: "Search Your Courses here...",
+                        suffixIcon: const Icon(CupertinoIcons.search),
+                        hintStyle: mainFont(fontSize: 12)))),
             const SizedBox(
-                height: mainHeight,
-                width: mainWidth,
-                child: CustomeTextField(
-                  hintText: "Search Courses here.....",
-                  labelText: "",
-                )),
+              height: 10,
+            ),
             const CustomeText(
               text: "Most Popular Course",
               fontweight: FontWeight.bold,
@@ -48,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: SingleChildScrollView(
                 child: FutureBuilder(
-                    future: courseData.fetchData(),
+                    future: watchCourseData.fetchData(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(

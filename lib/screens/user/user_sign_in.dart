@@ -16,7 +16,8 @@ class UserSignIn extends StatefulWidget {
 class _UserSignInState extends State<UserSignIn> {
   @override
   Widget build(BuildContext context) {
-    final textFieldData = Provider.of<TextFieldProvider>(context);
+    final watchTextFieldData = context.watch<TextFieldProvider>();
+    final readtextFieldData = context.watch<TextFieldProvider>();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -40,9 +41,9 @@ class _UserSignInState extends State<UserSignIn> {
                 const CustomeTextField(
                     hintText: "Enter Your Valid Email", labelText: "Email"),
                 CustomeTextField(
-                    obscureText: textFieldData.obsureText,
+                    obscureText: watchTextFieldData.obsureText,
                     onPressedEye: () {
-                      textFieldData.changeObscureText();
+                      readtextFieldData.changeObscureText();
                     },
                     hintText: "Enter Your Password",
                     labelText: "Password"),
@@ -56,6 +57,7 @@ class _UserSignInState extends State<UserSignIn> {
                       child: Padding(
                         padding: mainPadding,
                         child: CustomButton(
+                          color: primaryColor,
                           text: "Login",
                         ),
                       ),
