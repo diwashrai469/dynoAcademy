@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:numeral/numeral.dart';
 
 class GridTileView extends StatelessWidget {
-  final courseDetails;
+  final  courseDetails;
   const GridTileView({super.key, this.courseDetails});
 
   @override

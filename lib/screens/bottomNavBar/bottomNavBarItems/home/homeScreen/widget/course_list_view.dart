@@ -45,14 +45,13 @@ class _CourseListViewState extends State<CourseListView> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Provider<CoursesModel>(
-                          create: (_)=> courseDetails,
-                          child: ChangeNotifierProvider.value(
+                        builder: (context) => 
+                          ChangeNotifierProvider.value(
                               value: CoursesProvider(),
-                              child: CourseInformation(
+                              child:const CourseInformation(
                                   )),
                         ),
-                      ));
+                      );
                 },
                 child: Card(
                   color: Colors.grey.shade100,

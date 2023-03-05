@@ -2,6 +2,7 @@ import 'package:dynoacademy/models/courses/courses_model.dart';
 import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/courseInformation/grid_tile.dart';
 import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/courseInformation/learn_more.dart';
 import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/courseInformation/provider/learn_more_provider.dart';
+import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/courseInformation/tabBarInfo/tab_view.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:dynoacademy/widgets/custom/custom_button.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
@@ -18,7 +19,9 @@ class CourseInformation extends StatefulWidget {
 }
 
 class _CourseInformationState extends State<CourseInformation>
-    with SingleTickerProviderStateMixin {
+     {
+ 
+
   @override
   Widget build(BuildContext context) {
     final courseDetails = context.watch<CoursesModel>();
@@ -53,28 +56,30 @@ class _CourseInformationState extends State<CourseInformation>
                                     borderRadius: BorderRadius.circular(10),
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                            courseDetails.thumbnail
-                                            .toString()),
+                                            courseDetails.thumbnail.toString()),
                                         fit: BoxFit.contain)),
                               ),
                               Positioned(
                                   left: 132,
                                   top: 62,
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color.fromARGB(255, 27, 28, 30),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.white,
-                                              blurRadius: 5,
-                                              spreadRadius: 4)
-                                        ]),
-                                    child: const Icon(
-                                      Icons.play_arrow_rounded,
-                                      color: Colors.white,
+                                  child: Center(
+                                    child: Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color:
+                                              Color.fromARGB(255, 27, 28, 30),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.white,
+                                                blurRadius: 5,
+                                                spreadRadius: 4)
+                                          ]),
+                                      child: const Icon(
+                                        Icons.play_arrow_rounded,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ))
                             ],
@@ -93,23 +98,22 @@ class _CourseInformationState extends State<CourseInformation>
                           Padding(
                             padding: mainPadding,
                             child: CustomeText(
-                              text:courseDetails.courseName.toString(),
+                              text: courseDetails.courseName.toString(),
                               fontweight: FontWeight.bold,
                               color: const Color(0xFF000000),
                               fontsize: 16,
                             ),
                           ),
                           LearnMore(
-                              learnMoreInfo: 
+                              learnMoreInfo:
                                   courseDetails), // GETS ALL INFO WHEN CLICK LEARN MORE
 
-                          GridTileView(courseDetails:courseDetails),
+                          GridTileView(courseDetails: courseDetails),
                           const SizedBox(
                             height: 17,
                           ),
                           CustomeText(
-                            text:
-                                "Instructor: ${courseDetails.mentorId?.name}",
+                            text: "Instructor: ${courseDetails.mentorId?.name}",
                             color: const Color.fromRGBO(69, 69, 69, 1),
                             fontsize: 14,
                             fontweight: FontWeight.w500,
@@ -117,8 +121,7 @@ class _CourseInformationState extends State<CourseInformation>
                           Padding(
                             padding: mainPadding,
                             child: CustomeText(
-                              text:
-                                  "रू ${courseDetails.cost.toString()}",
+                              text: "रू ${courseDetails.cost.toString()}",
                               fontsize: 20,
                               fontweight: FontWeight.w500,
                               color: const Color.fromRGBO(69, 69, 69, 1),
@@ -153,6 +156,16 @@ class _CourseInformationState extends State<CourseInformation>
                                 color: primaryColor,
                               ),
                             ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TabBarInfo(),
+
+                          Container(
+                            height: 100,
+                            width: 100,
+                            color: Colors.red,
                           )
                         ],
                       ),
