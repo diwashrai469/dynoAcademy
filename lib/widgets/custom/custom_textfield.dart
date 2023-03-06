@@ -1,48 +1,65 @@
 import 'package:dynoacademy/utils/constant/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomeTextField extends StatelessWidget {
+class CustomeTextField extends StatefulWidget {
   const CustomeTextField(
       {super.key,
       this.hintText,
       this.labelText,
-      this.onPressedEye,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.suffixIcon});
   final String? hintText;
+  final Widget? suffixIcon;
   final String? labelText;
   final bool obscureText;
-  final void Function()? onPressedEye;
 
-  sufixIconCondition() {
-    if (labelText == "Enter Your Password") {
+  @override
+  State<CustomeTextField> createState() => _CustomeTextFieldState();
+}
+
+class _CustomeTextFieldState extends State<CustomeTextField> {
+  late bool obscure;
+
+  @override
+  initState() {
+    obscure = widget.obscureText;
+    super.initState();
+  }
+
+  Widget? sufixIconCondition() {
+    if (obscure) {
       return IconButton(
         icon: Icon(
             //for obscuretext true and false with icons
-            obscureText ? Icons.visibility_off : Icons.visibility,
+            obscure ? Icons.visibility_off : Icons.visibility,
             color: Colors.black),
-        onPressed: onPressedEye,
+        onPressed: () {
+          setState(() {
+            obscure = !obscure;
+          });
+        },
       );
-    } else if (hintText == "Search Courses here.....") {
-      return const Icon(
-        CupertinoIcons.search,
-      );
-    } else
-      null;
+    }
+
+    if (widget.suffixIcon != null) {
+      return widget.suffixIcon;
+    }
+
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:mainPadding,
+      padding: mainPadding,
       child: TextFormField(
-        obscureText: obscureText,
+        obscureText: obscure,
         decoration: InputDecoration(
           border: const OutlineInputBorder(borderSide: BorderSide()),
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: mainFont(fontSize: 12),
           suffixIcon: sufixIconCondition(),
-          label: Text(labelText.toString()),
+          label: Text(widget.labelText ?? ""),
           labelStyle: mainFont(),
         ),
       ),

@@ -1,10 +1,8 @@
-import 'package:dynoacademy/provider/textfield/textfield_provider.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:dynoacademy/widgets/custom/custom_button.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:dynoacademy/widgets/custom/custom_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class UserSignIn extends StatefulWidget {
   const UserSignIn({super.key});
@@ -16,8 +14,6 @@ class UserSignIn extends StatefulWidget {
 class _UserSignInState extends State<UserSignIn> {
   @override
   Widget build(BuildContext context) {
-    final watchTextFieldData = context.watch<TextFieldProvider>();
-    final readtextFieldData = context.watch<TextFieldProvider>();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -40,13 +36,8 @@ class _UserSignInState extends State<UserSignIn> {
                 ),
                 const CustomeTextField(
                     hintText: "Enter Your Valid Email", labelText: "Email"),
-                CustomeTextField(
-                    obscureText: watchTextFieldData.obsureText,
-                    onPressedEye: () {
-                      readtextFieldData.changeObscureText();
-                    },
-                    hintText: "Enter Your Password",
-                    labelText: "Password"),
+                const CustomeTextField(
+                    hintText: "Enter Your Password", labelText: "Password"),
                 const CustomeText(
                   text: "Forgot your Password?",
                   color: Colors.grey,

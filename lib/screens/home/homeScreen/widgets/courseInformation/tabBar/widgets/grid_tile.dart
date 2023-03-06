@@ -1,17 +1,16 @@
-import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:numeral/numeral.dart';
 
 class GridTileView extends StatelessWidget {
-  final  courseDetails;
+  final courseDetails;
   const GridTileView({super.key, this.courseDetails});
 
   @override
   Widget build(BuildContext context) {
-    return GridTileBar(
-      leading: Row(
+    return ClipRRect(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const Icon(
             CupertinoIcons.chart_bar_circle,
@@ -24,12 +23,8 @@ class GridTileView extends StatelessWidget {
             fontsize: 12,
             fontweight: FontWeight.w500,
           ),
-        ],
-      ),
-      title: Row(
-        children: [
           const Padding(
-            padding: mainPadding,
+            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
             child: Icon(
               CupertinoIcons.person_alt_circle,
               size: 30,
@@ -37,25 +32,21 @@ class GridTileView extends StatelessWidget {
             ),
           ),
           CustomeText(
-            text: numeral(courseDetails.studentsEnrolled).toString(),
+            text: numeral(courseDetails.studentsEnrolled!),
             color: const Color(0xFF454545),
             fontsize: 12,
             fontweight: FontWeight.w500,
-          )
-        ],
-      ),
-      trailing: Row(
-        children: [
-          const Icon(CupertinoIcons.star_circle,
-              size: 30, color: Color(0xFFE19C16)),
-          Padding(
-            padding: mainPadding,
-            child: CustomeText(
-              text: courseDetails.rating.toString(),
-              color: const Color(0xFF454545),
-              fontsize: 12,
-              fontweight: FontWeight.w500,
-            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
+            child: Icon(CupertinoIcons.star_circle,
+                size: 30, color: Color(0xFFE19C16)),
+          ),
+          CustomeText(
+            text: courseDetails.rating.toString(),
+            color: const Color(0xFF454545),
+            fontsize: 12,
+            fontweight: FontWeight.w500,
           ),
         ],
       ),

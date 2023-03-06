@@ -1,5 +1,5 @@
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
-import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/widget/course_list_view.dart';
+import 'package:dynoacademy/screens/home/homeScreen/widgets/courseList/course_list_view.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,8 +16,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final watchCourseData = context.watch<CoursesProvider>();
-
     return SafeArea(
       child: Scaffold(
           body: Padding(
@@ -65,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: SingleChildScrollView(
                 child: FutureBuilder(
-                    future: watchCourseData.fetchData(),
+                    future: context.watch<CoursesProvider>().fetchData(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(

@@ -5,8 +5,6 @@ class ProgressAndCertification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("progress and certification"),),
-    );
+    return Text("progress and certification");
   }
 }

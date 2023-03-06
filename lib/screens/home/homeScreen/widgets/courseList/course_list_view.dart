@@ -1,6 +1,5 @@
-import 'package:dynoacademy/models/courses/courses_model.dart';
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
-import 'package:dynoacademy/screens/bottomNavBar/bottomNavBarItems/home/homeScreen/courseInformation/course_information.dart';
+import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/widgets/course_information.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,15 +42,14 @@ class _CourseListViewState extends State<CourseListView> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => 
-                          ChangeNotifierProvider.value(
-                              value: CoursesProvider(),
-                              child:const CourseInformation(
-                                  )),
-                        ),
-                      );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChangeNotifierProvider(
+                          create: (_) => CoursesProvider(),
+                          child:
+                              CourseInformation(courseDetails: courseDetails)),
+                    ),
+                  );
                 },
                 child: Card(
                   color: Colors.grey.shade100,
@@ -79,48 +77,43 @@ class _CourseListViewState extends State<CourseListView> {
                           fontsize: 16,
                         ),
                       ),
-                      GridTileBar(
-                        leading: Row(
-                          children: [
-                            const Padding(
-                              padding: mainPadding,
-                              child: Icon(
-                                CupertinoIcons.person_alt_circle,
-                                color: primaryColor,
-                                size: 30,
-                              ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
+                            child: Icon(
+                              CupertinoIcons.person_alt_circle,
+                              color: primaryColor,
+                              size: 30,
                             ),
-                            CustomeText(
-                                text: Numeral(
-                                        courseDetails.studentsEnrolled as num)
-                                    .format(),
-                                fontsize: 14,
-                                color: fontColor)
-                          ],
-                        ),
-                        title: Row(
-                          children: [
-                            const Padding(
-                              padding: mainPadding,
-                              child: Icon(CupertinoIcons.star_circle,
-                                  size: 30, color: Color(0xFFE19C16)),
-                            ),
-                            CustomeText(
-                              text: courseDetails.rating.toString(),
-                              fontsize: 14,
-                              color: fontColor,
-                            )
-                          ],
-                        ),
-                        trailing: Padding(
-                          padding: mainPadding,
-                          child: CustomeText(
-                            text: "रू ${courseDetails.cost}",
-                            fontweight: FontWeight.w500,
-                            color: fontColor,
-                            fontsize: 20,
                           ),
-                        ),
+                          CustomeText(
+                              text:
+                                  Numeral(courseDetails.studentsEnrolled as num)
+                                      .format(),
+                              fontsize: 14,
+                              color: fontColor),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
+                            child: Icon(CupertinoIcons.star_circle,
+                                size: 30, color: Color(0xFFE19C16)),
+                          ),
+                          CustomeText(
+                            text: courseDetails.rating.toString(),
+                            fontsize: 14,
+                            color: fontColor,
+                          ),
+                          Padding(
+                            padding: mainPadding,
+                            child: CustomeText(
+                              text: "रू ${courseDetails.cost}",
+                              fontweight: FontWeight.w500,
+                              color: fontColor,
+                              fontsize: 20,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

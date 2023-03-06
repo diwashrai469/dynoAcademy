@@ -1,6 +1,8 @@
-import 'package:dynoacademy/screens/bottomNavBar/bottom_nav_bar.dart';
+import 'package:dynoacademy/screens/home/homeState/home_state_provider.dart';
+import 'package:dynoacademy/screens/home/widgets/bottomNavBar/bottom_nav_bar.dart';
 import 'package:dynoacademy/utils/constant/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +26,10 @@ class _SplashScreenState extends State<SplashScreen>
     _animationController.forward().then((value) => Navigator.push(
           context,
           PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const BottomNavBar(),
+            pageBuilder: (_, __, ___) => ChangeNotifierProvider(
+              create: (_) => HomeStateProvider(),
+              child: const BottomNavBar(),
+            ),
             transitionDuration: const Duration(
               seconds: 5,
             ),

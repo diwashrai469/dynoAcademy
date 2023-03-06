@@ -5,8 +5,6 @@ class Syllabus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text(" syllabus"),),
-    );
+    return Text(" syllabus");
   }
 }
