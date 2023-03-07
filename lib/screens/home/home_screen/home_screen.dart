@@ -1,6 +1,6 @@
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseList/course_list_view.dart';
-import 'package:dynoacademy/utils/constant/constants.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_list/course_list_view.dart';
+import 'package:dynoacademy/theme/custom_theme.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
           body: Padding(
-        padding: pagePadding,
+        padding: CustomeTheme().pagePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,20 +32,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: TextFormField(
                     decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(boarderCircularSize),
+                          borderRadius: BorderRadius.circular(
+                              CustomeTheme().boarderCircularSize),
                           borderSide: const BorderSide(color: Colors.blue),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(boarderCircularSize),
-                          borderSide: const BorderSide(
-                            color: primaryColor,
+                          borderRadius: BorderRadius.circular(
+                              CustomeTheme().boarderCircularSize),
+                          borderSide: BorderSide(
+                            color: CustomeTheme().primaryColor,
                           ),
                         ),
                         hintText: "Search Your Courses here...",
                         suffixIcon: const Icon(CupertinoIcons.search),
-                        hintStyle: mainFont(fontSize: 12)))),
+                        hintStyle: CustomeTheme().mainFont(fontSize: 12)))),
             const SizedBox(
               height: 10,
             ),

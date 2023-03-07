@@ -1,19 +1,19 @@
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/tabs/course_info.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/tabs/progress_and_certification.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/tabs/q&a.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/tabs/reviews.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/tabs/syllabus.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tabs/course_info.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tabs/progress_and_certification.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tabs/q&a.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tabs/reviews.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tabs/syllabus.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/material.dart';
 
-class TabBarInfo extends StatefulWidget {
-  const TabBarInfo({Key? key}) : super(key: key);
+class TabBarOptions extends StatefulWidget {
+  const TabBarOptions({Key? key}) : super(key: key);
 
   @override
-  State<TabBarInfo> createState() => _TabBarInfoState();
+  State<TabBarOptions> createState() => _TabBarInfoState();
 }
 
-class _TabBarInfoState extends State<TabBarInfo> with TickerProviderStateMixin {
+class _TabBarInfoState extends State<TabBarOptions> with TickerProviderStateMixin {
   Color colors = const Color.fromRGBO(69, 69, 69, 1);
 
   @override

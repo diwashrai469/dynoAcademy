@@ -1,10 +1,13 @@
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/tab_view.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/widgets/grid_tile.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/widgets/learn_more.dart';
-import 'package:dynoacademy/utils/constant/constants.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tab_bar_options.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/enroll_reviews_price/enroll_reviews_price.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/learn_more/learn_more.dart';
+import 'package:dynoacademy/theme/custom_theme.dart';
 import 'package:dynoacademy/widgets/custom/custom_button.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'widgets/learn_more/learn_more_provider.dart';
 
 class CourseInformation extends StatefulWidget {
   final courseDetails;
@@ -34,7 +37,7 @@ class _CourseInformationState extends State<CourseInformation> {
         body: Hero(
             tag: widget.courseDetails.sId,
             child: Padding(
-                padding: pagePadding,
+                padding: CustomeTheme().pagePadding,
                 child: SingleChildScrollView(
                   child: Material(
                     child: Column(
@@ -78,9 +81,9 @@ class _CourseInformationState extends State<CourseInformation> {
                                 ))
                           ],
                         ),
-                        const Padding(
-                          padding: mainPadding,
-                          child: Center(
+                        Padding(
+                          padding: CustomeTheme().mainPadding,
+                          child: const Center(
                             child: CustomeText(
                               text: "Preview this course",
                               fontsize: 14,
@@ -90,7 +93,7 @@ class _CourseInformationState extends State<CourseInformation> {
                           ),
                         ),
                         Padding(
-                          padding: mainPadding,
+                          padding: CustomeTheme().mainPadding,
                           child: CustomeText(
                             text: widget.courseDetails.courseName.toString(),
                             fontweight: FontWeight.bold,
@@ -98,11 +101,12 @@ class _CourseInformationState extends State<CourseInformation> {
                             fontsize: 16,
                           ),
                         ),
-                        LearnMore(
-                            learnMoreInfo: widget
-                                .courseDetails), // GETS ALL INFO WHEN CLICK LEARN MORE
+                        ChangeNotifierProvider(
+                          create: (_) => LearnMoreProvider(),
+                          child: LearnMore(learnMoreInfo: widget.courseDetails),
+                        ), // GETS ALL INFO WHEN CLICK LEARN MORE
 
-                        GridTileView(courseDetails: widget.courseDetails),
+                        EnrollReviewsPrice(courseDetails: widget.courseDetails),
                         const SizedBox(
                           height: 17,
                         ),
@@ -114,7 +118,7 @@ class _CourseInformationState extends State<CourseInformation> {
                           fontweight: FontWeight.w500,
                         ),
                         Padding(
-                          padding: mainPadding,
+                          padding: CustomeTheme().mainPadding,
                           child: CustomeText(
                             text: "रू ${widget.courseDetails.cost.toString()}",
                             fontsize: 20,
@@ -124,8 +128,9 @@ class _CourseInformationState extends State<CourseInformation> {
                         ),
                         SizedBox(
                             width: width,
-                            child: const CustomButton(
-                                color: primaryColor, text: "Enroll Now")),
+                            child: CustomButton(
+                                color: CustomeTheme().primaryColor,
+                                text: "Enroll Now")),
                         const SizedBox(
                           height: 5,
                         ),
@@ -143,19 +148,20 @@ class _CourseInformationState extends State<CourseInformation> {
                                     RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10.0),
-                                        side: const BorderSide(
-                                            color: primaryColor)))),
-                            child: const CustomeText(
+                                        side: BorderSide(
+                                            color:
+                                                CustomeTheme().primaryColor)))),
+                            child: CustomeText(
                               text: "Add To Cart",
                               fontweight: FontWeight.w500,
-                              color: primaryColor,
+                              color: CustomeTheme().primaryColor,
                             ),
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const TabBarInfo(),
+                        const TabBarOptions(),
 
                         Container(
                           height: 100,

@@ -1,6 +1,6 @@
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
-import 'package:dynoacademy/screens/home/homeScreen/widgets/courseInformation/tabBar/widgets/course_information.dart';
-import 'package:dynoacademy/utils/constant/constants.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/course_information.dart';
+import 'package:dynoacademy/theme/custom_theme.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:numeral/numeral.dart';
@@ -80,11 +80,11 @@ class _CourseListViewState extends State<CourseListView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
+                           Padding(
+                            padding:const EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: Icon(
                               CupertinoIcons.person_alt_circle,
-                              color: primaryColor,
+                              color: CustomeTheme().primaryColor,
                               size: 30,
                             ),
                           ),
@@ -93,7 +93,7 @@ class _CourseListViewState extends State<CourseListView> {
                                   Numeral(courseDetails.studentsEnrolled as num)
                                       .format(),
                               fontsize: 14,
-                              color: fontColor),
+                              color:CustomeTheme(). fontColor),
                           const Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: Icon(CupertinoIcons.star_circle,
@@ -102,14 +102,14 @@ class _CourseListViewState extends State<CourseListView> {
                           CustomeText(
                             text: courseDetails.rating.toString(),
                             fontsize: 14,
-                            color: fontColor,
+                            color:CustomeTheme(). fontColor,
                           ),
                           Padding(
-                            padding: mainPadding,
+                            padding:CustomeTheme(). mainPadding,
                             child: CustomeText(
                               text: "रू ${courseDetails.cost}",
                               fontweight: FontWeight.w500,
-                              color: fontColor,
+                              color:CustomeTheme(). fontColor,
                               fontsize: 20,
                             ),
                           ),

@@ -1,4 +1,4 @@
-import 'package:dynoacademy/utils/constant/constants.dart';
+import 'package:dynoacademy/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomeText extends StatelessWidget {
@@ -16,7 +16,7 @@ class CustomeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text,
-        style: mainFont(
+        style:CustomeTheme().mainFont(
           fontSize: fontsize,
           fontWeight: fontweight,
           color: color,

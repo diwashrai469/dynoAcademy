@@ -1,8 +1,10 @@
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/learn_more/learn_more_provider.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LearnMore extends StatefulWidget {
- final  learnMoreInfo;
+  final learnMoreInfo;
   const LearnMore({super.key, this.learnMoreInfo});
 
   @override
@@ -12,11 +14,9 @@ class LearnMore extends StatefulWidget {
 class _LearnMoreState extends State<LearnMore> {
   String firstHalf = '';
   String secondHalf = '';
-  bool showMore = true;
 
   @override
   void initState() {
-    // TODO: implement initState
     if (widget.learnMoreInfo.courseInfo!.length > 100) {
       firstHalf = widget.learnMoreInfo.courseInfo!.substring(0, 100);
       secondHalf = widget.learnMoreInfo.courseInfo!
@@ -30,6 +30,7 @@ class _LearnMoreState extends State<LearnMore> {
 
   @override
   Widget build(BuildContext context) {
+    print("learn more build");
     return Material(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
@@ -43,7 +44,7 @@ class _LearnMoreState extends State<LearnMore> {
             : Column(
                 children: <Widget>[
                   CustomeText(
-                    text: showMore
+                    text: context.watch<LearnMoreProvider>().showMore
                         ? ("$firstHalf ..... ")
                         : (firstHalf + secondHalf),
                     color: const Color(0xFF1E1E1E),
@@ -55,7 +56,9 @@ class _LearnMoreState extends State<LearnMore> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         CustomeText(
-                          text: showMore ? "Learn more" : "show less",
+                          text: context.watch<LearnMoreProvider>().showMore
+                              ? "Learn more"
+                              : "show less",
                           color: const Color(0xFF073763),
                           fontweight: FontWeight.w500,
                           fontsize: 14,
@@ -63,9 +66,7 @@ class _LearnMoreState extends State<LearnMore> {
                       ],
                     ),
                     onTap: () {
-                      setState(() {
-                        showMore = !showMore;
-                      });
+                      context.read<LearnMoreProvider>().showDetails();
                     },
                   ),
                 ],

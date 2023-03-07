@@ -1,4 +1,4 @@
-import 'package:dynoacademy/utils/constant/constants.dart';
+import 'package:dynoacademy/theme/custom_theme.dart';
 import 'package:dynoacademy/widgets/custom/custom_button.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:dynoacademy/widgets/custom/custom_textfield.dart';
@@ -42,13 +42,13 @@ class _UserSignInState extends State<UserSignIn> {
                   text: "Forgot your Password?",
                   color: Colors.grey,
                 ),
-                const Row(
+                Row(
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: mainPadding,
+                        padding: CustomeTheme().mainPadding,
                         child: CustomButton(
-                          color: primaryColor,
+                          color: CustomeTheme().primaryColor,
                           text: "Login",
                         ),
                       ),
@@ -70,10 +70,11 @@ class _UserSignInState extends State<UserSignIn> {
                 ),
                 Text.rich(TextSpan(
                     text: "Don't have and account? ",
-                    style: mainFont(),
+                    style: CustomeTheme().mainFont(),
                     children: <InlineSpan>[
                       TextSpan(
-                          text: 'Register', style: mainFont(color: Colors.blue))
+                          text: 'Register',
+                          style: CustomeTheme().mainFont(color: Colors.blue))
                     ]))
               ],
             ),

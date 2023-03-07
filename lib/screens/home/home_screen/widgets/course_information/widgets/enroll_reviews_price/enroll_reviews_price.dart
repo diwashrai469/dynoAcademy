@@ -2,9 +2,9 @@ import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:numeral/numeral.dart';
 
-class GridTileView extends StatelessWidget {
+class EnrollReviewsPrice extends StatelessWidget {
   final courseDetails;
-  const GridTileView({super.key, this.courseDetails});
+  const EnrollReviewsPrice({super.key, this.courseDetails});
 
   @override
   Widget build(BuildContext context) {
