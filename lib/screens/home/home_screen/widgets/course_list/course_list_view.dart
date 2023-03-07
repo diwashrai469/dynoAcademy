@@ -35,7 +35,7 @@ class _CourseListViewState extends State<CourseListView> {
           final courseDetails = allCourseData.courseList[index];
 
           return SizedBox(
-            height: height * 0.5,
+            height: height * 0.45,
             width: width * (377 / width),
             child: Hero(
               tag: courseDetails.sId.toString(),
@@ -80,8 +80,8 @@ class _CourseListViewState extends State<CourseListView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                           Padding(
-                            padding:const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: Icon(
                               CupertinoIcons.person_alt_circle,
                               color: CustomeTheme().primaryColor,
@@ -93,7 +93,7 @@ class _CourseListViewState extends State<CourseListView> {
                                   Numeral(courseDetails.studentsEnrolled as num)
                                       .format(),
                               fontsize: 14,
-                              color:CustomeTheme(). fontColor),
+                              color: CustomeTheme().fontColor),
                           const Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: Icon(CupertinoIcons.star_circle,
@@ -102,14 +102,14 @@ class _CourseListViewState extends State<CourseListView> {
                           CustomeText(
                             text: courseDetails.rating.toString(),
                             fontsize: 14,
-                            color:CustomeTheme(). fontColor,
+                            color: CustomeTheme().fontColor,
                           ),
                           Padding(
-                            padding:CustomeTheme(). mainPadding,
+                            padding: CustomeTheme().mainPadding,
                             child: CustomeText(
                               text: "रू ${courseDetails.cost}",
                               fontweight: FontWeight.w500,
-                              color:CustomeTheme(). fontColor,
+                              color: CustomeTheme().fontColor,
                               fontsize: 20,
                             ),
                           ),

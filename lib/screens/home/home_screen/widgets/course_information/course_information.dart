@@ -1,5 +1,6 @@
+import 'package:dynoacademy/models/courses/courses_model.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tab_bar_options.dart';
-import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/enroll_reviews_price/enroll_reviews_price.dart';
+import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/enroll_rating_price/enroll_rating_price.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/learn_more/learn_more.dart';
 import 'package:dynoacademy/theme/custom_theme.dart';
 import 'package:dynoacademy/widgets/custom/custom_button.dart';
@@ -10,10 +11,10 @@ import 'package:provider/provider.dart';
 import 'widgets/learn_more/learn_more_provider.dart';
 
 class CourseInformation extends StatefulWidget {
-  final courseDetails;
+  final CoursesModel courseDetails;
   const CourseInformation({
     super.key,
-    this.courseDetails,
+    required this.courseDetails,
   });
 
   @override
@@ -35,12 +36,13 @@ class _CourseInformationState extends State<CourseInformation> {
           backgroundColor: Colors.transparent,
         ),
         body: Hero(
-            tag: widget.courseDetails.sId,
+            tag: widget.courseDetails.sId.toString(),
             child: Padding(
-                padding: CustomeTheme().pagePadding,
+                padding: CustomeTheme().screenPadding,
                 child: SingleChildScrollView(
                   child: Material(
                     child: Column(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         const SizedBox(
                           height: 69,
@@ -58,8 +60,8 @@ class _CourseInformationState extends State<CourseInformation> {
                                       fit: BoxFit.contain)),
                             ),
                             Positioned(
-                                left: 132,
-                                top: 62,
+                                left: 136,
+                                top: 67,
                                 child: Center(
                                   child: Container(
                                     width: 50,
@@ -92,21 +94,19 @@ class _CourseInformationState extends State<CourseInformation> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: CustomeTheme().mainPadding,
-                          child: CustomeText(
-                            text: widget.courseDetails.courseName.toString(),
-                            fontweight: FontWeight.bold,
-                            color: const Color(0xFF000000),
-                            fontsize: 16,
-                          ),
+
+                        CustomeText(
+                          text: widget.courseDetails.courseName.toString(),
+                          fontweight: FontWeight.bold,
+                          color: const Color(0xFF000000),
+                          fontsize: 16,
                         ),
                         ChangeNotifierProvider(
                           create: (_) => LearnMoreProvider(),
                           child: LearnMore(learnMoreInfo: widget.courseDetails),
                         ), // GETS ALL INFO WHEN CLICK LEARN MORE
 
-                        EnrollReviewsPrice(courseDetails: widget.courseDetails),
+                        EnrollRatingPrice(courseDetails: widget.courseDetails),
                         const SizedBox(
                           height: 17,
                         ),
@@ -161,13 +161,7 @@ class _CourseInformationState extends State<CourseInformation> {
                         const SizedBox(
                           height: 10,
                         ),
-                        const TabBarOptions(),
-
-                        Container(
-                          height: 100,
-                          width: 100,
-                          color: Colors.red,
-                        )
+                        TabBarOptions(courseDetails: widget.courseDetails),
                       ],
                     ),
                   ),

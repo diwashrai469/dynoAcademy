@@ -15,8 +15,10 @@ class CustomeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style:CustomeTheme().mainFont(
+    return Text(
+        textAlign: TextAlign.start,
+        text,
+        style: CustomeTheme().mainFont(
           fontSize: fontsize,
           fontWeight: fontweight,
           color: color,

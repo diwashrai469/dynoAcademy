@@ -5,8 +5,8 @@ class QuestionAndAnswer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-    Text("q&a");
+    return const
+    Center(child: Text("q&a"));
     
   }
 }

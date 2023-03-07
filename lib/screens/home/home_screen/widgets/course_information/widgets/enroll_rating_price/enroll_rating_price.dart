@@ -1,16 +1,17 @@
+import 'package:dynoacademy/models/courses/courses_model.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:numeral/numeral.dart';
 
-class EnrollReviewsPrice extends StatelessWidget {
-  final courseDetails;
-  const EnrollReviewsPrice({super.key, this.courseDetails});
+class EnrollRatingPrice extends StatelessWidget {
+  final CoursesModel courseDetails;
+  const EnrollRatingPrice({super.key,required this.courseDetails});
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.values.last,
         children: [
           const Icon(
             CupertinoIcons.chart_bar_circle,

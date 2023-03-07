@@ -1,11 +1,12 @@
+import 'package:dynoacademy/models/courses/courses_model.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/learn_more/learn_more_provider.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LearnMore extends StatefulWidget {
-  final learnMoreInfo;
-  const LearnMore({super.key, this.learnMoreInfo});
+  final CoursesModel learnMoreInfo;
+  const LearnMore({super.key,required this.learnMoreInfo});
 
   @override
   State<LearnMore> createState() => _LearnMoreState();

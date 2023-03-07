@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
           body: Padding(
-        padding: CustomeTheme().pagePadding,
+        padding: CustomeTheme().screenPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
