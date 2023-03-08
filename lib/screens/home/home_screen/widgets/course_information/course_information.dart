@@ -2,7 +2,8 @@ import 'package:dynoacademy/models/courses/courses_model.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/tab_bar/tab_bar_options.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/enroll_rating_price/enroll_rating_price.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/widgets/learn_more/learn_more.dart';
-import 'package:dynoacademy/theme/custom_theme.dart';
+import 'package:dynoacademy/theme/app_theme.dart';
+import 'package:dynoacademy/constant/constant.dart';
 import 'package:dynoacademy/widgets/custom/custom_button.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _CourseInformationState extends State<CourseInformation> {
         body: Hero(
             tag: widget.courseDetails.sId.toString(),
             child: Padding(
-                padding: CustomeTheme().screenPadding,
+                padding: Constant().screenPadding,
                 child: SingleChildScrollView(
                   child: Material(
                     child: Column(
@@ -84,22 +85,22 @@ class _CourseInformationState extends State<CourseInformation> {
                           ],
                         ),
                         Padding(
-                          padding: CustomeTheme().mainPadding,
-                          child: const Center(
+                          padding: Constant().mainPadding,
+                          child: Center(
                             child: CustomeText(
                               text: "Preview this course",
-                              fontsize: 14,
-                              color: Color(0xFF1E1E1E),
-                              fontweight: FontWeight.w500,
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ),
 
                         CustomeText(
                           text: widget.courseDetails.courseName.toString(),
-                          fontweight: FontWeight.bold,
-                          color: const Color(0xFF000000),
-                          fontsize: 16,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 15),
                         ),
                         ChangeNotifierProvider(
                           create: (_) => LearnMoreProvider(),
@@ -113,23 +114,24 @@ class _CourseInformationState extends State<CourseInformation> {
                         CustomeText(
                           text:
                               "Instructor: ${widget.courseDetails.mentorId?.name}",
-                          color: const Color.fromRGBO(69, 69, 69, 1),
-                          fontsize: 14,
-                          fontweight: FontWeight.w500,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         Padding(
-                          padding: CustomeTheme().mainPadding,
+                          padding: Constant().mainPadding,
                           child: CustomeText(
-                            text: "रू ${widget.courseDetails.cost.toString()}",
-                            fontsize: 20,
-                            fontweight: FontWeight.w500,
-                            color: const Color.fromRGBO(69, 69, 69, 1),
-                          ),
+                              text:
+                                  "रू ${widget.courseDetails.cost.toString()}",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 20)),
                         ),
                         SizedBox(
                             width: width,
                             child: CustomButton(
-                                color: CustomeTheme().primaryColor,
+                                color: AppTheme().primaryColor,
                                 text: "Enroll Now")),
                         const SizedBox(
                           height: 5,
@@ -149,12 +151,10 @@ class _CourseInformationState extends State<CourseInformation> {
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                         side: BorderSide(
-                                            color:
-                                                CustomeTheme().primaryColor)))),
+                                            color: AppTheme().primaryColor)))),
                             child: CustomeText(
                               text: "Add To Cart",
-                              fontweight: FontWeight.w500,
-                              color: CustomeTheme().primaryColor,
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ),

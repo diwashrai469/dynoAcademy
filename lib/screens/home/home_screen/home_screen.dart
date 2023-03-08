@@ -1,6 +1,7 @@
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_list/course_list_view.dart';
-import 'package:dynoacademy/theme/custom_theme.dart';
+import 'package:dynoacademy/theme/app_theme.dart';
+import 'package:dynoacademy/constant/constant.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
           body: Padding(
-        padding: CustomeTheme().screenPadding,
+        padding: Constant().screenPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,28 +34,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
-                              CustomeTheme().boarderCircularSize),
+                              Constant().boarderCircularSize),
                           borderSide: const BorderSide(color: Colors.blue),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
-                              CustomeTheme().boarderCircularSize),
+                              Constant().boarderCircularSize),
                           borderSide: BorderSide(
-                            color: CustomeTheme().primaryColor,
+                            color:AppTheme().primaryColor,
                           ),
                         ),
                         hintText: "Search Your Courses here...",
                         suffixIcon: const Icon(CupertinoIcons.search),
-                        hintStyle: CustomeTheme().mainFont(fontSize: 12)))),
+                        hintStyle: Constant().mainFont(fontSize: 12)))),
             const SizedBox(
               height: 10,
             ),
-            const CustomeText(
+            CustomeText(
+              style: Theme.of(context).textTheme.titleLarge,
               text: "Most Popular Course",
-              fontweight: FontWeight.bold,
-              fontsize: 20,
             ),
-            const CustomeText(
+            CustomeText(
+                style: Theme.of(context).textTheme.bodyMedium,
                 text:
                     "Check out our current offerings and stay tuned for more to come!"),
             const SizedBox(

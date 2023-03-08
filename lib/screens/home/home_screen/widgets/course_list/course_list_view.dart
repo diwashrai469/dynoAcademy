@@ -1,6 +1,7 @@
 import 'package:dynoacademy/provider/dio/course/courses_provider.dart';
 import 'package:dynoacademy/screens/home/home_screen/widgets/course_information/course_information.dart';
-import 'package:dynoacademy/theme/custom_theme.dart';
+import 'package:dynoacademy/theme/app_theme.dart';
+import 'package:dynoacademy/constant/constant.dart';
 import 'package:dynoacademy/widgets/custom/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:numeral/numeral.dart';
@@ -35,7 +36,7 @@ class _CourseListViewState extends State<CourseListView> {
           final courseDetails = allCourseData.courseList[index];
 
           return SizedBox(
-            height: height * 0.45,
+            height: height * 0.5,
             width: width * (377 / width),
             child: Hero(
               tag: courseDetails.sId.toString(),
@@ -71,10 +72,12 @@ class _CourseListViewState extends State<CourseListView> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(19.0, 9, 23, 20),
                         child: CustomeText(
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 15),
                           text: courseDetails.courseName.toString(),
-                          fontweight: FontWeight.bold,
-                          color: const Color(0xFF000000),
-                          fontsize: 16,
                         ),
                       ),
                       Row(
@@ -84,16 +87,15 @@ class _CourseListViewState extends State<CourseListView> {
                             padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: Icon(
                               CupertinoIcons.person_alt_circle,
-                              color: CustomeTheme().primaryColor,
+                              color: AppTheme().lightTheme.primaryColor,
                               size: 30,
                             ),
                           ),
                           CustomeText(
-                              text:
-                                  Numeral(courseDetails.studentsEnrolled as num)
-                                      .format(),
-                              fontsize: 14,
-                              color: CustomeTheme().fontColor),
+                            text: Numeral(courseDetails.studentsEnrolled as num)
+                                .format(),
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
                           const Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: Icon(CupertinoIcons.star_circle,
@@ -101,17 +103,16 @@ class _CourseListViewState extends State<CourseListView> {
                           ),
                           CustomeText(
                             text: courseDetails.rating.toString(),
-                            fontsize: 14,
-                            color: CustomeTheme().fontColor,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           Padding(
-                            padding: CustomeTheme().mainPadding,
+                            padding: Constant().mainPadding,
                             child: CustomeText(
-                              text: "रू ${courseDetails.cost}",
-                              fontweight: FontWeight.w500,
-                              color: CustomeTheme().fontColor,
-                              fontsize: 20,
-                            ),
+                                text: "रू ${courseDetails.cost}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(fontSize: 17)),
                           ),
                         ],
                       ),

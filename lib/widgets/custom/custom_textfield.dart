@@ -1,4 +1,4 @@
-import 'package:dynoacademy/theme/custom_theme.dart';
+import 'package:dynoacademy/constant/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomeTextField extends StatefulWidget {
@@ -51,16 +51,16 @@ class _CustomeTextFieldState extends State<CustomeTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: CustomeTheme().mainPadding,
+      padding: Constant().mainPadding,
       child: TextFormField(
         obscureText: obscure,
         decoration: InputDecoration(
           border: const OutlineInputBorder(borderSide: BorderSide()),
           hintText: widget.hintText,
-          hintStyle: CustomeTheme().mainFont(fontSize: 12),
+          // hintStyle: CustomeTheme().mainFont(fontSize: 12),
           suffixIcon: sufixIconCondition(),
           label: Text(widget.labelText ?? ""),
-          labelStyle: CustomeTheme().mainFont(),
+          // labelStyle: CustomeTheme().mainFont(),
         ),
       ),
     );

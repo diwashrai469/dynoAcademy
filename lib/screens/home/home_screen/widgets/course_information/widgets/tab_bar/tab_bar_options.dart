@@ -32,40 +32,29 @@ class _TabBarInfoState extends State<TabBarOptions>
         SizedBox(
           height: 40,
           child: Card(
-            
             child: TabBar(
               controller: tabController,
               isScrollable: true,
               tabs: [
                 CustomeText(
                   text: "Course Details",
-                  color: colors,
-                  fontsize: 14,
-                  fontweight: FontWeight.w500,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 CustomeText(
                   text: "Syllabus",
-                  color: colors,
-                  fontsize: 14,
-                  fontweight: FontWeight.w500,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 CustomeText(
                   text: "Q&A",
-                  color: colors,
-                  fontsize: 14,
-                  fontweight: FontWeight.w500,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 CustomeText(
                   text: "Reviews",
-                  color: colors,
-                  fontsize: 14,
-                  fontweight: FontWeight.w500,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 CustomeText(
                   text: "Progress & certification",
-                  color: colors,
-                  fontsize: 14,
-                  fontweight: FontWeight.w500,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
             ),

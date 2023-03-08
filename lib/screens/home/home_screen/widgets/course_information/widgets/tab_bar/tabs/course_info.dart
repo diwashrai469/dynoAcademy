@@ -9,31 +9,24 @@ class CourseInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color textColor = Color(0xFF454545);
     return ListView(
       padding: EdgeInsets.zero,
       shrinkWrap: true,
       children: [
         CustomeText(
           text: courseDetails.courseInfo ?? "",
-          fontweight: FontWeight.w500,
-          fontsize: 14,
-          color: textColor,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(
           height: 23,
         ),
-        const CustomeText(
+        CustomeText(
           text: "About Course:",
-          fontsize: 14,
-          fontweight: FontWeight.w500,
-          color: textColor,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         CustomeText(
           text: parse(courseDetails.courseDescription ?? "").body!.text,
-          fontsize: 14,
-          fontweight: FontWeight.w500,
-          color: textColor,
+          style: Theme.of(context).textTheme.bodyMedium,
         )
       ],
     );

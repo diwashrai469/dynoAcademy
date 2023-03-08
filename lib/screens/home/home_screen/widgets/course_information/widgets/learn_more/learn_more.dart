@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class LearnMore extends StatefulWidget {
   final CoursesModel learnMoreInfo;
-  const LearnMore({super.key,required this.learnMoreInfo});
+  const LearnMore({super.key, required this.learnMoreInfo});
 
   @override
   State<LearnMore> createState() => _LearnMoreState();
@@ -37,21 +37,14 @@ class _LearnMoreState extends State<LearnMore> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         child: secondHalf.isEmpty
             ? CustomeText(
-                text: firstHalf,
-                color: const Color(0xFF1E1E1E),
-                fontweight: FontWeight.w500,
-                fontsize: 14,
-              )
+                text: firstHalf, style: Theme.of(context).textTheme.bodyMedium)
             : Column(
                 children: <Widget>[
                   CustomeText(
-                    text: context.watch<LearnMoreProvider>().showMore
-                        ? ("$firstHalf ..... ")
-                        : (firstHalf + secondHalf),
-                    color: const Color(0xFF1E1E1E),
-                    fontweight: FontWeight.w500,
-                    fontsize: 14,
-                  ),
+                      text: context.watch<LearnMoreProvider>().showMore
+                          ? ("$firstHalf ..... ")
+                          : (firstHalf + secondHalf),
+                      style: Theme.of(context).textTheme.bodyMedium),
                   InkWell(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -60,9 +53,10 @@ class _LearnMoreState extends State<LearnMore> {
                           text: context.watch<LearnMoreProvider>().showMore
                               ? "Learn more"
                               : "show less",
-                          color: const Color(0xFF073763),
-                          fontweight: FontWeight.w500,
-                          fontsize: 14,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: const Color(0xFF073763),
+                                  ),
                         ),
                       ],
                     ),

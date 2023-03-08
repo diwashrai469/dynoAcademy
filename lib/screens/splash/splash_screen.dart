@@ -1,6 +1,6 @@
 import 'package:dynoacademy/screens/home/home_state/home_state_provider.dart';
 import 'package:dynoacademy/screens/home/widgets/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:dynoacademy/theme/custom_theme.dart';
+import 'package:dynoacademy/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: CustomeTheme().primaryColor,
+          backgroundColor: Theme.of(context).primaryColor,
           body: FadeTransition(
             opacity: fadeAnimation,
             child: Center(
